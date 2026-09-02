@@ -1,6 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InterviewQuestion } from "../types";
-import { HelpCircle, ChevronDown, ChevronUp, Target, Compass, Copy, Check } from "lucide-react";
+import {
+  HelpCircle,
+  ChevronDown,
+  ChevronUp,
+  Target,
+  Compass,
+  Copy,
+  Check,
+  Volume2,
+  Clock,
+  Play,
+  Pause,
+  RotateCcw,
+} from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 
 interface InterviewSectionProps {
@@ -8,9 +21,26 @@ interface InterviewSectionProps {
 }
 
 export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions }) => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [copied, setCopied] = useState<boolean>(false);
+
+  // STAR Practice Timer state (120 seconds default)
+  const [timerActive, setTimerActive] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(120);
+  const [activeTimerQIdx, setActiveTimerQIdx] = useState<number | null>(null);
+
+  useEffect(() => {
+    let interval: any = null;
+    if (timerActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      setTimerActive(false);
+    }
+    return () => clearInterval(interval);
+  }, [timerActive, timeLeft]);
 
   const toggleExpand = (idx: number) => {
     setExpandedIndex(expandedIndex === idx ? null : idx);
@@ -26,6 +56,31 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
     navigator.clipboard.writeText(formatted);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const playTTS = (text: string) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang === "ar" ? "ar-SA" : "en-US";
+    utterance.rate = 0.95;
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+  };
+
+  const handleToggleTimer = (idx: number) => {
+    if (activeTimerQIdx === idx && timerActive) {
+      setTimerActive(false);
+    } else {
+      setActiveTimerQIdx(idx);
+      setTimeLeft(120);
+      setTimerActive(true);
+    }
   };
 
   return (
@@ -65,6 +120,7 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
       <div className="space-y-3">
         {questions.map((q, idx) => {
           const isExpanded = expandedIndex === idx;
+          const isTimingThis = activeTimerQIdx === idx;
 
           return (
             <div
@@ -102,6 +158,53 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
 
               {isExpanded && (
                 <div className="px-4 pb-4 pt-1 border-t border-slate-800/60 bg-slate-950/90 text-xs space-y-3">
+                  {/* Action Bar: TTS Audio + Practice Timer */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-b border-slate-800/60 pb-2.5">
+                    <button
+                      onClick={() => playTTS(q.question)}
+                      className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center space-x-1.5 rtl:space-x-reverse transition"
+                    >
+                      <Volume2 className="w-3.5 h-3.5 text-purple-400" />
+                      <span>{t("listenQuestion")}</span>
+                    </button>
+
+                    {/* Interactive Timer Controls */}
+                    <div className="flex items-center space-x-2 rtl:space-x-reverse bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">
+                      <Clock className="w-3.5 h-3.5 text-amber-400" />
+                      <span className="font-mono text-xs font-semibold text-slate-200">
+                        {isTimingThis ? formatTime(timeLeft) : "02:00"}
+                      </span>
+                      <button
+                        onClick={() => handleToggleTimer(idx)}
+                        className="text-[11px] text-amber-300 hover:text-amber-200 font-medium flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-500/10"
+                      >
+                        {isTimingThis && timerActive ? (
+                          <>
+                            <Pause className="w-3 h-3" />
+                            <span>{t("pauseTimer")}</span>
+                          </>
+                        ) : (
+                          <>
+                            <Play className="w-3 h-3" />
+                            <span>{t("startTimer")}</span>
+                          </>
+                        )}
+                      </button>
+                      {isTimingThis && (
+                        <button
+                          onClick={() => {
+                            setTimeLeft(120);
+                            setTimerActive(false);
+                          }}
+                          className="text-slate-400 hover:text-white"
+                          title="Reset"
+                        >
+                          <RotateCcw className="w-3 h-3" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
                   {/* Rationale */}
                   <div className="flex items-start space-x-2 rtl:space-x-reverse text-slate-400 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
                     <Compass className="w-4 h-4 text-brand-400 flex-shrink-0 mt-0.5" />

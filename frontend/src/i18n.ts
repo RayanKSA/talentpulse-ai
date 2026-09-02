@@ -9,6 +9,8 @@ export const translations = {
     liveMatcher: "Live AI Matcher",
     candidateView: "Candidate & ATS Match",
     recruiterView: "Recruiter Leaderboard",
+    compareView: "Candidate Compare",
+    optimizerView: "ATS Bullet Optimizer",
 
     // Sample bar
     quickProfiles: "Quick Evaluation Profiles:",
@@ -68,11 +70,13 @@ export const translations = {
     expFit: "Experience Fit",
     expFitSub: "Years vs. seniority level",
     exportDossier: "Export Dossier",
+    printDossierBtn: "Print / PDF Dossier",
 
     // Tabs
     tabSkills: "Skills Gap Analysis",
     tabAts: "ATS Audit & Hygiene",
     tabInterview: "Targeted Interview Prep",
+    tabSalary: "Market Compensation",
 
     // Skills breakdown
     skillsTitle: "Skills Gap & Competency Analysis",
@@ -107,6 +111,11 @@ export const translations = {
     probingQuestions: "Probing Questions",
     interviewerGoal: "Interviewer Goal:",
     starFramework: "Expected Candidate Answer Framework (STAR Method):",
+    listenQuestion: "Listen (TTS)",
+    practiceTimer: "STAR Practice Timer",
+    startTimer: "Start Timer",
+    pauseTimer: "Pause",
+    resetTimer: "Reset",
 
     // Recruiter Dashboard
     recruiterDashboardTitle: "Recruiter Candidate Benchmarking",
@@ -128,6 +137,44 @@ export const translations = {
     deepMatchBtn: "Deep Match",
     noCandidatesFound: "No candidates matched your search criteria.",
 
+    // Candidate Comparison
+    compareTitle: "Head-to-Head Candidate Matchup",
+    compareSubtitle: "Benchmark two candidates side-by-side against role specifications to evaluate skills, ATS scores, and trade-offs.",
+    candA: "Candidate A",
+    candB: "Candidate B",
+    recruiterRecommendation: "Recruiter Recommendation:",
+    skillsOverlap: "Shared Core Skills",
+    uniqueToA: "Unique Strengths to Candidate A",
+    uniqueToB: "Unique Strengths to Candidate B",
+    directMetricsComparison: "Direct Metrics Comparison",
+    metricLabel: "Metric",
+
+    // Bullet Optimizer
+    optimizerTitle: "AI Resume Bullet Point Enhancer (Google XYZ Formula)",
+    optimizerSubtitle: "Transform weak, passive responsibilities into high-impact ATS achievements: Accomplished [X] as measured by [Y] by doing [Z].",
+    inputBulletLabel: "Enter a bullet point from your resume:",
+    bulletPlaceholder: "e.g. Worked on the backend and made APIs faster with Python and caching...",
+    presetExamples: "Or try a sample weak bullet point:",
+    generateOptimized: "Optimize Bullet Points",
+    optimizedSuggestions: "High-Impact ATS Alternatives (XYZ Formula):",
+    copyBullet: "Copy",
+
+    // Salary Benchmark
+    salaryTitle: "Market Salary & Skill Premium Benchmark",
+    salarySubtitle: "Estimated compensation ranges based on skill scarcity, experience level, and role demand.",
+    estimatedRange: "Estimated Base Range",
+    medianMarket: "Market Median (50th Percentile)",
+    topPercentile: "Senior / Top Tier (90th Percentile)",
+    topSkillPremiums: "High-Value Skill Premiums",
+    currencyUsd: "USD ($)",
+    currencySar: "SAR (ر.س)",
+
+    // Print Modal
+    printDossierTitle: "Candidate Evaluation Dossier",
+    officialReport: "Official Technical Screening Report",
+    printAction: "Print / Save PDF",
+    closeAction: "Close",
+
     // Footer
     footerBrand: "TalentPulse AI",
     footerDesc: "Enterprise ATS & Candidate Match Intelligence Platform",
@@ -143,7 +190,9 @@ export const translations = {
     brandTagline: "الفحص الذكي للسير الذاتية ومطابقة الكفاءات والمسار المهني",
     liveMatcher: "مطابقة ذكية نشطة",
     candidateView: "فحص المرشح ومعايير ATS",
-    recruiterView: "لوحة متصدري مسؤولي التوظيف",
+    recruiterView: "لوحة متصدري التوظيف",
+    compareView: "مقارنة المرشحين",
+    optimizerView: "محسّن نقاط السيرة الذاتية",
 
     // Sample bar
     quickProfiles: "ملفات تقييم جاهزة (تجربة بنقرة واحدة):",
@@ -202,12 +251,14 @@ export const translations = {
     atsAuditGaugeSub: "المقاييس الرقمية وهيكلية النص",
     expFit: "ملاءمة سنوات الخبرة",
     expFitSub: "السنوات مقابل المستوى المطلوب",
-    exportDossier: "تصدير الملف الشامل",
+    exportDossier: "تصدير نصي",
+    printDossierBtn: "طباعة / ملف PDF",
 
     // Tabs
     tabSkills: "تحليل فجوة المهارات",
     tabAts: "فحص توافق نظام ATS",
-    tabInterview: "أسئلة المقابلة الذكية المخصصة",
+    tabInterview: "أسئلة المقابلة الذكية",
+    tabSalary: "تقدير الراتب والسوق",
 
     // Skills breakdown
     skillsTitle: "تحليل فجوة المهارات والكفاءات المهنية",
@@ -242,6 +293,11 @@ export const translations = {
     probingQuestions: "أسئلة استكشافية",
     interviewerGoal: "هدف المحاور:",
     starFramework: "إطار الإجابة المتوقع من المرشح (نموذج STAR):",
+    listenQuestion: "استماع صوتي",
+    practiceTimer: "مؤقت تدريب STAR",
+    startTimer: "بدء المؤقت",
+    pauseTimer: "إيقاف مؤقت",
+    resetTimer: "إعادة ضبط",
 
     // Recruiter Dashboard
     recruiterDashboardTitle: "مقارنة وتصنيف المرشحين لمسؤولي التوظيف",
@@ -262,6 +318,44 @@ export const translations = {
     colAction: "الإجراء",
     deepMatchBtn: "فحص تفصيلي",
     noCandidatesFound: "لم يتم العثور على مرشحين يطابقون معايير البحث.",
+
+    // Candidate Comparison
+    compareTitle: "المقارنة المباشرة بين مرشحين (وجهاً لوجه)",
+    compareSubtitle: "مقارنة مرشحين جنباً لجنب مقابل متطلبات الوظيفة لتقييم المهارات ودرجات ATS ونقاط القوة والتمايز.",
+    candA: "المرشح (أ)",
+    candB: "المرشح (ب)",
+    recruiterRecommendation: "توصية مسؤول التوظيف:",
+    skillsOverlap: "المهارات المشتركة بين المرشحين",
+    uniqueToA: "نقاط تميز ينفرد بها المرشح (أ)",
+    uniqueToB: "نقاط تميز ينفرد بها المرشح (ب)",
+    directMetricsComparison: "المقارنة المباشرة للمؤشرات",
+    metricLabel: "المؤشر",
+
+    // Bullet Optimizer
+    optimizerTitle: "محسّن نقاط السيرة الذاتية الذكي (صيغة Google XYZ)",
+    optimizerSubtitle: "حوّل المهام التقليدية الضعيفة إلى إنجازات قوية تطابق معايير ATS وفق صيغة: حقق [س] مقاساً بـ [ص] من خلال عمل [ع].",
+    inputBulletLabel: "أدخل نقطة أو مسؤولية من سيرتك الذاتية:",
+    bulletPlaceholder: "مثال: عملت على تطوير الواجهات الخلفية وتحسين سرعة الـ API باستخدام بايثون والتخزين المؤقت...",
+    presetExamples: "أو جرب نقطة نموذجية شائعة:",
+    generateOptimized: "توليد الصياغات المحسنة",
+    optimizedSuggestions: "الصياغات المحسنة عالية التأثير (وفق صيغة XYZ):",
+    copyBullet: "نسخ",
+
+    // Salary Benchmark
+    salaryTitle: "تقدير الراتب ومكافأة المهارات في السوق",
+    salarySubtitle: "نطاقات الرواتب التقديرية بناءً على ندرة المهارات وسنوات الخبرة ومستوى الطلب في السوق.",
+    estimatedRange: "نطاق الراتب الأساسي المتوقع",
+    medianMarket: "متوسط السوق (النسبة المئوية 50)",
+    topPercentile: "أعلى فئة للخبراء (النسبة المئوية 90)",
+    topSkillPremiums: "علاوة المهارات عالية القيمة",
+    currencyUsd: "دولار ($)",
+    currencySar: "ريال (ر.س)",
+
+    // Print Modal
+    printDossierTitle: "الملف الشامل لتقييم المرشح",
+    officialReport: "التقرير الرسمي لفرز وتقييم الكفاءات التقنية",
+    printAction: "طباعة أو حفظ PDF",
+    closeAction: "إغلاق",
 
     // Footer
     footerBrand: "منصة تالنت بلس",

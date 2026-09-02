@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar } from "./components/Navbar";
+import { Navbar, NavTabType } from "./components/Navbar";
 import { SampleBar } from "./components/SampleBar";
 import { ResumeInput } from "./components/ResumeInput";
 import { JobInput } from "./components/JobInput";
@@ -8,14 +8,26 @@ import { SkillBreakdown } from "./components/SkillBreakdown";
 import { ATSAuditSection } from "./components/ATSAuditSection";
 import { InterviewSection } from "./components/InterviewSection";
 import { RecruiterDashboard } from "./components/RecruiterDashboard";
+import { CandidateComparison } from "./components/CandidateComparison";
+import { BulletOptimizer } from "./components/BulletOptimizer";
+import { SalaryBenchmark } from "./components/SalaryBenchmark";
+import { PrintDossierModal } from "./components/PrintDossierModal";
 import { JobPosting, SampleResume, MatchAnalysisResult } from "./types";
 import { fetchJobs, fetchSampleResumes, parseResumeUpload, matchResume } from "./api";
-import { AlertCircle, Award, ShieldCheck, HelpCircle, Download } from "lucide-react";
+import {
+  AlertCircle,
+  Award,
+  ShieldCheck,
+  HelpCircle,
+  Download,
+  Printer,
+  TrendingUp,
+} from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 
 export function App() {
   const { lang, t } = useLanguage();
-  const [activeTab, setActiveTab] = useState<"candidate" | "recruiter">("candidate");
+  const [activeTab, setActiveTab] = useState<NavTabType>("candidate");
   const [jobs, setJobs] = useState<JobPosting[]>([]);
   const [sampleResumes, setSampleResumes] = useState<SampleResume[]>([]);
 
@@ -28,8 +40,9 @@ export function App() {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [analysisResult, setAnalysisResult] = useState<MatchAnalysisResult | null>(null);
-  const [activeResultTab, setActiveResultTab] = useState<"skills" | "ats" | "interview">("skills");
+  const [activeResultTab, setActiveResultTab] = useState<"skills" | "ats" | "interview" | "salary">("skills");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState<boolean>(false);
 
   // Initialize jobs and sample resumes on load
   useEffect(() => {
@@ -192,15 +205,17 @@ ${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        {/* Sample Bar for Instant 1-Click Evaluation */}
-        <SampleBar
-          sampleResumes={sampleResumes}
-          jobs={jobs}
-          selectedCandId={selectedCandId}
-          selectedJobId={selectedJobId}
-          onSelectCandidate={handleSelectCandidate}
-          onSelectJob={handleSelectJob}
-        />
+        {/* Sample Bar for Instant 1-Click Evaluation (Shown on Candidate view) */}
+        {activeTab === "candidate" && (
+          <SampleBar
+            sampleResumes={sampleResumes}
+            jobs={jobs}
+            selectedCandId={selectedCandId}
+            selectedJobId={selectedJobId}
+            onSelectCandidate={handleSelectCandidate}
+            onSelectJob={handleSelectJob}
+          />
+        )}
 
         {errorMsg && (
           <div className="bg-rose-950/40 border border-rose-500/40 rounded-xl p-4 text-xs text-rose-300 flex items-center space-x-2 rtl:space-x-reverse">
@@ -209,8 +224,8 @@ ${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
           </div>
         )}
 
-        {/* View Mode: Candidate & ATS Match */}
-        {activeTab === "candidate" ? (
+        {/* VIEW 1: Candidate & ATS Match */}
+        {activeTab === "candidate" && (
           <div className="space-y-6">
             {/* Top Row: Input panels */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -258,19 +273,31 @@ ${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
                       </h2>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5">
                       <div className="bg-slate-950/80 px-4 py-2.5 rounded-xl border border-slate-800 text-xs text-slate-300 max-w-lg leading-relaxed">
                         <strong className="text-brand-400 font-semibold block mb-0.5">{t("recruiterBrief")}</strong>
                         {analysisResult.summary_for_recruiter}
                       </div>
 
-                      <button
-                        onClick={handleExportReport}
-                        className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center space-x-1.5 rtl:space-x-reverse transition shadow-sm self-stretch sm:self-auto justify-center"
-                      >
-                        <Download className="w-4 h-4 text-brand-400" />
-                        <span>{t("exportDossier")}</span>
-                      </button>
+                      <div className="flex items-center gap-2 self-stretch sm:self-auto">
+                        <button
+                          onClick={handleExportReport}
+                          className="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center space-x-1 rtl:space-x-reverse transition shadow-sm justify-center flex-1 sm:flex-initial"
+                          title="Export text report"
+                        >
+                          <Download className="w-3.5 h-3.5 text-brand-400" />
+                          <span>{t("exportDossier")}</span>
+                        </button>
+
+                        <button
+                          onClick={() => setIsPrintModalOpen(true)}
+                          className="px-3 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-medium flex items-center space-x-1 rtl:space-x-reverse transition shadow-md justify-center flex-1 sm:flex-initial"
+                          title="Print or Save PDF"
+                        >
+                          <Printer className="w-3.5 h-3.5" />
+                          <span>{t("printDossierBtn")}</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -340,6 +367,18 @@ ${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
                     <HelpCircle className="w-4 h-4" />
                     <span>{t("tabInterview")} ({analysisResult.interview_questions.length})</span>
                   </button>
+
+                  <button
+                    onClick={() => setActiveResultTab("salary")}
+                    className={`flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 text-xs font-semibold rounded-xl whitespace-nowrap transition ${
+                      activeResultTab === "salary"
+                        ? "bg-brand-600/20 text-brand-300 border border-brand-500/40"
+                        : "text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    <TrendingUp className="w-4 h-4" />
+                    <span>{t("tabSalary")}</span>
+                  </button>
                 </div>
 
                 {/* Tab content rendering */}
@@ -354,11 +393,17 @@ ${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
                 {activeResultTab === "interview" && (
                   <InterviewSection questions={analysisResult.interview_questions} />
                 )}
+
+                {activeResultTab === "salary" && (
+                  <SalaryBenchmark analysisResult={analysisResult} />
+                )}
               </div>
             )}
           </div>
-        ) : (
-          /* Recruiter Leaderboard View */
+        )}
+
+        {/* VIEW 2: Recruiter Leaderboard */}
+        {activeTab === "recruiter" && (
           <RecruiterDashboard
             jobs={jobs}
             selectedJobId={selectedJobId}
@@ -366,7 +411,30 @@ ${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
             onInspectCandidate={handleInspectCandidateFromRecruiter}
           />
         )}
+
+        {/* VIEW 3: Candidate Comparison */}
+        {activeTab === "compare" && (
+          <CandidateComparison
+            jobs={jobs}
+            sampleResumes={sampleResumes}
+            selectedJobId={selectedJobId}
+          />
+        )}
+
+        {/* VIEW 4: ATS Bullet Optimizer */}
+        {activeTab === "optimizer" && (
+          <BulletOptimizer />
+        )}
       </main>
+
+      {/* Printable PDF Modal */}
+      {analysisResult && (
+        <PrintDossierModal
+          isOpen={isPrintModalOpen}
+          onClose={() => setIsPrintModalOpen(false)}
+          result={analysisResult}
+        />
+      )}
 
       {/* Footer */}
       <footer className="border-t border-slate-800 bg-slate-900/60 py-6 text-center text-xs text-slate-500">
