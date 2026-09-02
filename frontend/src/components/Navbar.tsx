@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             <span className="text-slate-300">Live AI Matcher</span>
           </div>
           <a
-            href="https://github.com"
+            href="https://github.com/RayanKSA"
             target="_blank"
             rel="noreferrer"
             className="flex items-center space-x-1 px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
