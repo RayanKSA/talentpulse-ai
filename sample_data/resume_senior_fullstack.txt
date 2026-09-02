@@ -1,0 +1,30 @@
+ALEX CHEN
+San Francisco, CA | alex.chen.dev@gmail.com | (415) 892-3104 | linkedin.com/in/alexchen-eng | github.com/alexchen-dev
+
+PROFESSIONAL SUMMARY
+Results-driven Full Stack Software Engineer with 4.5 years of experience architecting high-traffic web applications, scalable REST APIs, and responsive frontends. Proven track record reducing API latency by 45% and leading cross-functional migration to modern microservices.
+
+TECHNICAL SKILLS
+- Languages: Python, TypeScript, JavaScript, SQL, HTML/CSS, Shell/Bash
+- Frontend: React, Next.js, Tailwind CSS, Redux, Vite
+- Backend: FastAPI, Node.js, Express, REST API, Microservices
+- Cloud & DevOps: Docker, AWS, CI/CD, GitHub Actions, Linux, Git
+- Databases: PostgreSQL, Redis, MySQL
+
+WORK EXPERIENCE
+Senior Full Stack Developer | CloudScale Solutions | 2022 - Present
+- Architected and deployed 12+ RESTful microservices using Python and FastAPI, handling over 2.5M daily requests with 99.98% uptime.
+- Engineered modern single-page dashboard using React, TypeScript, and Tailwind CSS, improving user session duration by 35%.
+- Implemented Redis caching strategy and optimized PostgreSQL database queries, reducing P99 latency by 48% across key endpoints.
+- Spearheaded migration to Docker containerization and built GitHub Actions CI/CD pipeline, decreasing deployment time from 40 minutes to under 6 minutes.
+- Mentored 4 junior engineers on clean code, unit testing, and design patterns.
+
+Full Stack Developer | Nexa Digital Labs | 2020 - 2022
+- Developed responsive web applications using React, Node.js, and Express for 8 enterprise clients.
+- Designed database schemas in PostgreSQL and MySQL, writing automated migrations and database seeders.
+- Automated end-to-end integration tests using Pytest and Jest, achieving 88% test coverage.
+- Integrated third-party payment gateways (Stripe) and webhook listeners processing $850k in monthly transactions.
+
+EDUCATION
+Bachelor of Science in Computer Science | University of California, Berkeley | 2016 - 2020
+- Relevant Coursework: Data Structures & Algorithms, Distributed Systems, Database Management Systems.

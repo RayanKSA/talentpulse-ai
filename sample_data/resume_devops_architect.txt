@@ -1,0 +1,26 @@
+MARCUS VANCE
+Seattle, WA | m.vance.cloud@protonmail.com | (206) 555-7281 | linkedin.com/in/marcus-vance-cloud | github.com/marcusvance
+
+PROFESSIONAL SUMMARY
+Senior Cloud & Infrastructure Architect with 8 years of experience designing high-scale multi-region cloud systems. Specialist in Kubernetes orchestration, Infrastructure as Code, Kafka streaming, and zero-downtime microservices.
+
+TECHNICAL SKILLS
+- Cloud & Orchestration: AWS, Kubernetes, Docker, Terraform, CI/CD, Linux, GitHub Actions
+- Languages: Go, Python, Shell/Bash, SQL
+- Data & Streaming: Kafka, Redis, PostgreSQL, Elasticsearch
+- Architecture: Microservices, System Design, Distributed Systems, High Availability
+
+WORK EXPERIENCE
+Principal Cloud Infrastructure Architect | HyperScale Networks | 2021 - Present
+- Designed and operated multi-cluster Kubernetes infrastructure on AWS supporting 15M daily active users.
+- Automated cloud provisioning using Terraform, reducing environment spin-up time from 4 days to 18 minutes.
+- Architected enterprise Kafka message bus handling 80,000 transactions per second with sub-20ms latency.
+- Cut annual AWS cloud expenditure by $420k through spot instance orchestration and auto-scaling policies.
+
+Senior DevOps Engineer | CloudBridge Systems | 2018 - 2021
+- Led company-wide containerization initiative, migrating 45 monolith services to Docker and Kubernetes.
+- Established enterprise CI/CD pipelines with automated security vulnerability scanning and canary deployments.
+- Implemented centralized observability with Prometheus, Grafana, and Elasticsearch across 200+ microservices.
+
+EDUCATION
+Bachelor of Science in Computer Engineering | University of Washington | 2014 - 2018

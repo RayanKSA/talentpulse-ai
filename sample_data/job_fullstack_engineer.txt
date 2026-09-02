@@ -1,0 +1,23 @@
+Title: Full Stack Software Engineer
+Company: StripeScale Technologies
+Department: Core Platform
+Experience Level: Mid-Level
+Required Skills: Python, FastAPI, React, TypeScript, PostgreSQL, Docker, REST API
+Preferred Skills: AWS, Redis, CI/CD, Tailwind CSS, Kubernetes
+
+About the Role:
+We are seeking a versatile Full Stack Software Engineer to build resilient customer-facing workflows and scalable backend microservices. You will collaborate with product designers, frontend engineers, and DevOps leads to deliver mission-critical web applications.
+
+Responsibilities:
+- Design, implement, and maintain high-throughput REST APIs using Python and FastAPI.
+- Architect dynamic, responsive user interfaces using React, TypeScript, and Tailwind CSS.
+- Optimize complex database queries and migrations in PostgreSQL.
+- Package services in Docker containers and deploy via automated CI/CD pipelines.
+- Integrate Redis caching layers to reduce API P99 latency.
+
+Requirements:
+- 2+ years of professional experience building web applications.
+- Strong proficiency with Python (FastAPI/Django) and modern TypeScript/React.
+- Solid understanding of relational database schema design with PostgreSQL.
+- Experience with Docker containerization and version control with Git.
+- Exposure to cloud environments (AWS/GCP) and CI/CD pipelines is a strong plus.

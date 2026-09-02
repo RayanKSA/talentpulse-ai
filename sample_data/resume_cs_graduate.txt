@@ -1,0 +1,32 @@
+SARAH JENKINS
+Austin, TX | sarah.jenkins.cs@outlook.com | (512) 402-9811 | linkedin.com/in/sarahjenkins-cs | github.com/sjenkins-code
+
+PROFESSIONAL SUMMARY
+Enthusiastic Computer Science graduate with strong foundations in object-oriented programming, modern web frameworks, and algorithmic problem solving. Experienced in building full-stack applications with React, TypeScript, and Python.
+
+TECHNICAL SKILLS
+- Languages: Python, JavaScript, TypeScript, Java, SQL, HTML/CSS
+- Frontend: React, Tailwind CSS, HTML5, CSS3, Vite
+- Backend: FastAPI, REST API, Node.js
+- Databases & Tools: PostgreSQL, SQLite, Git, GitHub, Linux, Agile / Scrum
+
+FEATURED PROJECTS
+DevPulse - Developer Productivity Tracker (Full Stack)
+- Built interactive developer task management application using React, TypeScript, and Tailwind CSS.
+- Developed backend REST API in FastAPI with PostgreSQL database integration, supporting JWT authentication.
+- Deployed frontend to Vercel and backend to Render with automated GitHub Actions CI/CD workflows.
+
+Algorithm Visualizer Platform
+- Created interactive visualizer for sorting and graph algorithms in React and JavaScript.
+- Reached 1,200 unique monthly visitors on GitHub Pages with 150+ GitHub stars.
+
+WORK EXPERIENCE
+Software Engineering Intern | Austin Tech Innovations | 2023 - 2023
+- Built responsive UI components in React and TypeScript for customer billing portal.
+- Wrote unit tests and assisted in debugging REST API endpoints in Python.
+- Collaborated in daily agile standups and bi-weekly sprint planning meetings.
+
+EDUCATION
+Bachelor of Science in Computer Science | University of Texas at Austin | 2020 - 2024
+- GPA: 3.82 / 4.0
+- Honors: Dean's Honor Roll (4 consecutive semesters)
