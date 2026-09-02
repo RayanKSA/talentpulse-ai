@@ -1,12 +1,15 @@
 # TalentPulse AI
 
-[![CI Pipeline](https://github.com/yourusername/talentpulse-ai/actions/workflows/ci.yml/badge.svg)](https://github.com)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://rayanksa.github.io/talentpulse-ai/)
+
+[![CI Pipeline](https://github.com/RayanKSA/talentpulse-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/RayanKSA/talentpulse-ai)
 [![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688.svg)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/frontend-React%20%2B%20TypeScript-61DAFB.svg)](https://react.dev)
 [![Tests](https://img.shields.io/badge/pytest-15%20passed%20(100%25)-brightgreen.svg)](https://pytest.org)
-[![Docker](https://img.shields.io/badge/docker-ready-2496ED.svg)](https://docker.com)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
+
+> **Live Interactive Demo**: [https://rayanksa.github.io/talentpulse-ai/](https://rayanksa.github.io/talentpulse-ai/)
 
 An intelligent Applicant Tracking System (ATS) and resume match intelligence platform. TalentPulse AI analyzes resumes against job descriptions to provide real-time ATS compatibility scoring, skills gap breakdown, and structured interview question guides.
 
