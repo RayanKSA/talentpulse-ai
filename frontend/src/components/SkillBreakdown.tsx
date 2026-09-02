@@ -1,21 +1,24 @@
 import React from "react";
 import { SkillMatchBreakdown } from "../types";
 import { CheckCircle2, XCircle, AlertTriangle, PlusCircle, Award } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
 
 interface SkillBreakdownProps {
   breakdown: SkillMatchBreakdown;
 }
 
 export const SkillBreakdown: React.FC<SkillBreakdownProps> = ({ breakdown }) => {
+  const { t } = useLanguage();
+
   return (
     <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 shadow-lg">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-2">
-          <Award className="w-5 h-5 text-brand-400" />
-          <h3 className="font-semibold text-white">Skills Gap & Competency Analysis</h3>
+        <div className="flex items-center space-x-2 rtl:space-x-reverse">
+          <Award className="w-5 h-5 text-brand-400 flex-shrink-0" />
+          <h3 className="font-semibold text-white">{t("skillsTitle")}</h3>
         </div>
         <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-medium border border-slate-700">
-          Match Ratio: {breakdown.match_percentage}%
+          {t("matchRatio")}: {breakdown.match_percentage}%
         </span>
       </div>
 
@@ -23,9 +26,9 @@ export const SkillBreakdown: React.FC<SkillBreakdownProps> = ({ breakdown }) => 
         {/* Matched Skills */}
         <div className="bg-slate-950/60 rounded-xl p-4 border border-slate-800/80">
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center space-x-1.5 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>Matched Competencies ({breakdown.matched_skills.length})</span>
+            <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+              <span>{t("matchedCompetencies")} ({breakdown.matched_skills.length})</span>
             </div>
           </div>
           {breakdown.matched_skills.length > 0 ? (
@@ -41,20 +44,20 @@ export const SkillBreakdown: React.FC<SkillBreakdownProps> = ({ breakdown }) => 
               ))}
             </div>
           ) : (
-            <p className="text-xs text-slate-500 italic">No direct required skill matches detected.</p>
+            <p className="text-xs text-slate-500 italic">{t("noMatchedSkills")}</p>
           )}
         </div>
 
         {/* Missing Required Skills */}
         <div className="bg-slate-950/60 rounded-xl p-4 border border-slate-800/80">
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center space-x-1.5 text-rose-400 text-xs font-semibold uppercase tracking-wider">
-              <XCircle className="w-4 h-4" />
-              <span>Missing Core Skills ({breakdown.missing_required_skills.length})</span>
+            <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-rose-400 text-xs font-semibold uppercase tracking-wider">
+              <XCircle className="w-4 h-4 flex-shrink-0" />
+              <span>{t("missingCore")} ({breakdown.missing_required_skills.length})</span>
             </div>
             {breakdown.missing_required_skills.length > 0 && (
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-medium">
-                High Priority Gap
+                {t("highPriorityGap")}
               </span>
             )}
           </div>
@@ -72,16 +75,16 @@ export const SkillBreakdown: React.FC<SkillBreakdownProps> = ({ breakdown }) => 
             </div>
           ) : (
             <p className="text-xs text-emerald-400/90 font-medium">
-              Candidate fulfills all core mandatory skills!
+              {t("allCoreFulfilled")}
             </p>
           )}
         </div>
 
         {/* Missing Preferred Skills */}
         <div className="bg-slate-950/60 rounded-xl p-4 border border-slate-800/80">
-          <div className="flex items-center space-x-1.5 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <AlertTriangle className="w-4 h-4" />
-            <span>Missing Preferred Skills ({breakdown.missing_preferred_skills.length})</span>
+          <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+            <span>{t("missingPreferred")} ({breakdown.missing_preferred_skills.length})</span>
           </div>
           {breakdown.missing_preferred_skills.length > 0 ? (
             <div className="flex flex-wrap gap-2">
@@ -96,15 +99,15 @@ export const SkillBreakdown: React.FC<SkillBreakdownProps> = ({ breakdown }) => 
               ))}
             </div>
           ) : (
-            <p className="text-xs text-slate-500 italic">No missing preferred skills.</p>
+            <p className="text-xs text-slate-500 italic">{t("noMissingPref")}</p>
           )}
         </div>
 
         {/* Bonus Skills */}
         <div className="bg-slate-950/60 rounded-xl p-4 border border-slate-800/80">
-          <div className="flex items-center space-x-1.5 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <PlusCircle className="w-4 h-4" />
-            <span>Candidate Bonus Skills ({breakdown.bonus_skills.length})</span>
+          <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <PlusCircle className="w-4 h-4 flex-shrink-0" />
+            <span>{t("candidateBonus")} ({breakdown.bonus_skills.length})</span>
           </div>
           {breakdown.bonus_skills.length > 0 ? (
             <div className="flex flex-wrap gap-2">
@@ -118,12 +121,12 @@ export const SkillBreakdown: React.FC<SkillBreakdownProps> = ({ breakdown }) => 
               ))}
               {breakdown.bonus_skills.length > 10 && (
                 <span className="text-xs text-slate-500 self-center">
-                  +{breakdown.bonus_skills.length - 10} more
+                  +{breakdown.bonus_skills.length - 10} {t("moreSkills")}
                 </span>
               )}
             </div>
           ) : (
-            <p className="text-xs text-slate-500 italic">No additional peripheral skills listed.</p>
+            <p className="text-xs text-slate-500 italic">{t("noBonusSkills")}</p>
           )}
         </div>
       </div>

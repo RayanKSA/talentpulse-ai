@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { InterviewQuestion } from "../types";
 import { HelpCircle, ChevronDown, ChevronUp, Target, Compass, Copy, Check } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
 
 interface InterviewSectionProps {
   questions: InterviewQuestion[];
 }
 
 export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions }) => {
+  const { t } = useLanguage();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -28,36 +30,36 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
 
   return (
     <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 shadow-lg">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-2">
-          <HelpCircle className="w-5 h-5 text-purple-400" />
-          <h3 className="font-semibold text-white">AI-Generated Interview Questions & STAR Rubrics</h3>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <div className="flex items-center space-x-2 rtl:space-x-reverse">
+          <HelpCircle className="w-5 h-5 text-purple-400 flex-shrink-0" />
+          <h3 className="font-semibold text-white">{t("interviewTitle")}</h3>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 rtl:space-x-reverse">
           <button
             onClick={handleCopyQuestions}
-            className="text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center space-x-1.5 transition"
+            className="text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center space-x-1.5 rtl:space-x-reverse transition"
           >
             {copied ? (
               <>
                 <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-emerald-400">Copied!</span>
+                <span className="text-emerald-400 font-medium">{t("copied")}</span>
               </>
             ) : (
               <>
                 <Copy className="w-3.5 h-3.5 text-slate-400" />
-                <span>Copy Questions</span>
+                <span>{t("copyQuestions")}</span>
               </>
             )}
           </button>
           <span className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 font-medium border border-purple-500/20">
-            {questions.length} Probing Questions
+            {questions.length} {t("probingQuestions")}
           </span>
         </div>
       </div>
 
       <p className="text-xs text-slate-400 mb-4">
-        Tailored questions specifically targeting the candidate's skill gaps and verifying depth in core areas.
+        {t("interviewSubtitle")}
       </p>
 
       <div className="space-y-3">
@@ -71,9 +73,9 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
             >
               <button
                 onClick={() => toggleExpand(idx)}
-                className="w-full text-left p-4 flex items-start justify-between gap-3 hover:bg-slate-900/40 transition"
+                className="w-full text-left rtl:text-right p-4 flex items-start justify-between gap-3 hover:bg-slate-900/40 transition"
               >
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start space-x-3 rtl:space-x-reverse">
                   <div className="w-6 h-6 rounded-md bg-purple-500/20 text-purple-300 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                     {idx + 1}
                   </div>
@@ -101,10 +103,10 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
               {isExpanded && (
                 <div className="px-4 pb-4 pt-1 border-t border-slate-800/60 bg-slate-950/90 text-xs space-y-3">
                   {/* Rationale */}
-                  <div className="flex items-start space-x-2 text-slate-400 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
+                  <div className="flex items-start space-x-2 rtl:space-x-reverse text-slate-400 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
                     <Compass className="w-4 h-4 text-brand-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <strong className="text-slate-300 font-medium">Interviewer Goal:</strong> {q.rationale}
+                      <strong className="text-slate-300 font-medium">{t("interviewerGoal")}</strong> {q.rationale}
                     </div>
                   </div>
 
@@ -112,11 +114,11 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
                   {q.suggested_star_points && q.suggested_star_points.length > 0 && (
                     <div>
                       <span className="text-[11px] font-semibold text-purple-300 uppercase tracking-wider block mb-2">
-                        Expected Candidate Answer Framework (STAR Method):
+                        {t("starFramework")}
                       </span>
-                      <ul className="space-y-1.5 pl-2">
+                      <ul className="space-y-1.5 pl-2 rtl:pl-0 rtl:pr-2">
                         {q.suggested_star_points.map((pt, pIdx) => (
-                          <li key={pIdx} className="flex items-start space-x-2 text-slate-300">
+                          <li key={pIdx} className="flex items-start space-x-2 rtl:space-x-reverse text-slate-300">
                             <span className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5 flex-shrink-0" />
                             <span>{pt}</span>
                           </li>
