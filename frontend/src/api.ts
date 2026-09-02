@@ -1,6 +1,6 @@
 import { JobPosting, SampleResume, MatchAnalysisResult, RecruiterCandidate, ATSAuditReport } from "./types";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 export async function fetchJobs(): Promise<JobPosting[]> {
   const res = await fetch(`${API_BASE}/api/jobs`);
