@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { InterviewQuestion } from "../types";
-import { HelpCircle, ChevronDown, ChevronUp, Sparkles, Target, Compass } from "lucide-react";
+import { HelpCircle, ChevronDown, ChevronUp, Target, Compass, Copy, Check } from "lucide-react";
 
 interface InterviewSectionProps {
   questions: InterviewQuestion[];
@@ -8,9 +8,22 @@ interface InterviewSectionProps {
 
 export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const toggleExpand = (idx: number) => {
     setExpandedIndex(expandedIndex === idx ? null : idx);
+  };
+
+  const handleCopyQuestions = () => {
+    const formatted = questions
+      .map(
+        (q, idx) =>
+          `Q${idx + 1} (${q.category}${q.skill_targeted ? ` - ${q.skill_targeted}` : ""}):\n${q.question}\nRationale: ${q.rationale}\n`
+      )
+      .join("\n");
+    navigator.clipboard.writeText(formatted);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -20,9 +33,27 @@ export const InterviewSection: React.FC<InterviewSectionProps> = ({ questions })
           <HelpCircle className="w-5 h-5 text-purple-400" />
           <h3 className="font-semibold text-white">AI-Generated Interview Questions & STAR Rubrics</h3>
         </div>
-        <span className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 font-medium border border-purple-500/20">
-          {questions.length} Probing Questions
-        </span>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={handleCopyQuestions}
+            className="text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center space-x-1.5 transition"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="text-emerald-400">Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5 text-slate-400" />
+                <span>Copy Questions</span>
+              </>
+            )}
+          </button>
+          <span className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 font-medium border border-purple-500/20">
+            {questions.length} Probing Questions
+          </span>
+        </div>
       </div>
 
       <p className="text-xs text-slate-400 mb-4">

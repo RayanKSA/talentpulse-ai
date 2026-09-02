@@ -78,6 +78,27 @@ TAXONOMY: Dict[str, Dict[str, List[str]]] = {
         "Pandas": ["pandas"],
         "NumPy": ["numpy"],
     },
+    "Data Engineering & Analytics": {
+        "Apache Spark": ["spark", "apache spark", "pyspark"],
+        "Snowflake": ["snowflake", "snowflake data warehouse"],
+        "Airflow": ["airflow", "apache airflow"],
+        "dbt": ["dbt", "data build tool"],
+        "Databricks": ["databricks"],
+        "BigQuery": ["bigquery", "google bigquery"],
+    },
+    "Mobile & Cross-Platform": {
+        "React Native": ["react native"],
+        "Flutter": ["flutter", "dart"],
+        "iOS Development": ["ios", "swiftui", "uikit"],
+        "Android Development": ["android", "jetpack compose"],
+    },
+    "Security & Compliance": {
+        "Application Security": ["appsec", "application security", "secure coding"],
+        "OWASP": ["owasp", "owasp top 10"],
+        "Penetration Testing": ["penetration testing", "pen testing", "vulnerability assessment"],
+        "SIEM / SOC": ["siem", "soc", "incident response", "splunk"],
+        "SOC 2 / Compliance": ["soc 2", "iso 27001", "gdpr", "hipaa"],
+    },
     "Architecture & Methodologies": {
         "System Design": ["system design", "high level design", "low level design", "architecture"],
         "Agile / Scrum": ["agile", "scrum", "kanban", "sprints"],

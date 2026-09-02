@@ -1,5 +1,6 @@
 """
-Preloaded Sample Resumes and Job Descriptions for 1-Click HR & Recruiter Demonstration.
+Preloaded Sample Resumes and Job Descriptions for 1-Click Demonstration.
+Covers 12 diverse industry roles across engineering, data, cloud, mobile, and security.
 """
 
 SAMPLE_JOBS = [
@@ -7,7 +8,7 @@ SAMPLE_JOBS = [
         "id": "job-1",
         "title": "Full Stack Software Engineer",
         "company": "StripeScale Technologies",
-        "department": "Core Platform",
+        "department": "Engineering",
         "experience_level": "Mid-Level",
         "required_skills": ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "Docker", "REST API"],
         "preferred_skills": ["AWS", "Redis", "CI/CD", "Tailwind CSS", "Kubernetes"],
@@ -34,7 +35,7 @@ Requirements:
         "id": "job-2",
         "title": "Senior Backend Distributed Systems Engineer",
         "company": "Apex Fintech Solutions",
-        "department": "Payments Infrastructure",
+        "department": "Engineering",
         "experience_level": "Senior",
         "required_skills": ["Python", "Go", "PostgreSQL", "Redis", "Kafka", "Kubernetes", "System Design", "Microservices"],
         "preferred_skills": ["AWS", "Terraform", "Docker", "gRPC", "CI/CD"],
@@ -61,7 +62,7 @@ Requirements:
         "id": "job-3",
         "title": "Machine Learning & NLP Engineer",
         "company": "CognitiveFlow AI",
-        "department": "Applied Research",
+        "department": "Data & AI",
         "experience_level": "Mid-Level",
         "required_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "NLP", "Scikit-Learn", "Docker"],
         "preferred_skills": ["FastAPI", "SQL", "Pandas", "AWS", "Git"],
@@ -86,7 +87,7 @@ Requirements:
         "id": "job-4",
         "title": "Junior Frontend Developer",
         "company": "Nova Interactive Studio",
-        "department": "Product UI/UX",
+        "department": "Frontend",
         "experience_level": "Junior",
         "required_skills": ["React", "JavaScript", "TypeScript", "HTML/CSS", "Tailwind CSS", "Git"],
         "preferred_skills": ["Next.js", "REST API", "Vite", "Agile / Scrum"],
@@ -104,6 +105,198 @@ Requirements:
 - 0 to 2 years of experience or recent Computer Science graduate with personal projects.
 - Solid grasp of React, JavaScript (ES6+), TypeScript, and CSS/Tailwind.
 - Familiarity with Git, GitHub pull requests, and modern web developer tooling.
+"""
+    },
+    {
+        "id": "job-5",
+        "title": "Cloud DevOps & Site Reliability Lead (SRE)",
+        "company": "TerraScale Cloud Infrastructure",
+        "department": "Cloud & DevOps",
+        "experience_level": "Senior",
+        "required_skills": ["AWS", "Kubernetes", "Docker", "Terraform", "CI/CD", "Linux", "GitHub Actions"],
+        "preferred_skills": ["Go", "Python", "Prometheus", "Elasticsearch", "System Design"],
+        "description": """
+About the Role:
+TerraScale is seeking a Cloud DevOps and Site Reliability Engineer to spearhead our cloud infrastructure automation, multi-region Kubernetes deployments, and zero-downtime release pipelines.
+
+Responsibilities:
+- Author and maintain Infrastructure as Code (IaC) modules using Terraform on AWS.
+- Manage multi-cluster Kubernetes environments with GitOps and ArgoCD.
+- Build automated CI/CD deployment pipelines with security scanning and canary rollouts.
+- Establish SLOs, SLIs, and monitoring dashboards with Prometheus, Grafana, and Datadog.
+
+Requirements:
+- 4+ years in DevOps, SRE, or Cloud Infrastructure engineering.
+- Production proficiency with AWS cloud architecture and Kubernetes orchestration.
+- Mastery of Terraform, Linux systems administration, and automated CI/CD.
+"""
+    },
+    {
+        "id": "job-6",
+        "title": "Mobile Application Engineer (React Native / iOS)",
+        "company": "PulseMobility Health",
+        "department": "Mobile",
+        "experience_level": "Mid-Level",
+        "required_skills": ["React Native", "TypeScript", "JavaScript", "REST API", "Git", "HTML/CSS"],
+        "preferred_skills": ["iOS Development", "Android Development", "Redux", "CI/CD"],
+        "description": """
+About the Role:
+Join PulseMobility to build high-performance, accessible cross-platform mobile apps for digital health and patient telemetry monitoring.
+
+Responsibilities:
+- Build cross-platform mobile features using React Native, TypeScript, and modern state managers.
+- Optimize app rendering performance, offline synchronization, and background battery usage.
+- Integrate native device APIs (camera, Bluetooth, biometrics) and secure local storage.
+- Publish and manage app builds through iOS TestFlight and Google Play Console.
+
+Requirements:
+- 2+ years of professional React Native or mobile development experience.
+- Strong TypeScript/JavaScript foundations with clean UI/UX implementation.
+- Experience consuming RESTful APIs and handling offline-first state architecture.
+"""
+    },
+    {
+        "id": "job-7",
+        "title": "Application Security & DevSecOps Specialist",
+        "company": "CyberShield Defense",
+        "department": "Security",
+        "experience_level": "Mid-Level",
+        "required_skills": ["Application Security", "OWASP", "Python", "Linux", "Docker", "CI/CD"],
+        "preferred_skills": ["Penetration Testing", "SIEM / SOC", "AWS", "Git", "SOC 2 / Compliance"],
+        "description": """
+About the Role:
+CyberShield is hiring an Application Security Specialist to embed automated security testing into our software development lifecycle and conduct vulnerability assessments.
+
+Responsibilities:
+- Conduct threat modeling, architecture reviews, and code audits against OWASP Top 10 vulnerabilities.
+- Integrate SAST, DAST, and dependency scanning into automated CI/CD pipelines.
+- Investigate security alerts, triage bug bounty findings, and coordinate remediation.
+- Partner with engineering teams to promote secure coding guidelines and encryption standards.
+
+Requirements:
+- 2+ years in Application Security (AppSec) or cybersecurity operations.
+- Strong knowledge of web application security risks (XSS, SQLi, CSRF, SSRF, AuthN/AuthZ).
+- Familiarity with CI/CD automation, container security, and script-level Python/Bash.
+"""
+    },
+    {
+        "id": "job-8",
+        "title": "Data Platform & Analytics Engineer",
+        "company": "DataVanguard Analytics",
+        "department": "Data & AI",
+        "experience_level": "Mid-Level",
+        "required_skills": ["Python", "SQL", "Apache Spark", "Snowflake", "dbt", "Airflow"],
+        "preferred_skills": ["PostgreSQL", "AWS", "Databricks", "Kafka", "Docker"],
+        "description": """
+About the Role:
+Build and optimize our centralized data warehouse and real-time analytical processing pipelines powering business intelligence and ML models.
+
+Responsibilities:
+- Develop robust, idempotent batch and streaming ETL pipelines using Apache Spark and Python.
+- Model dimensional data marts and transformations in Snowflake using dbt.
+- Orchestrate complex pipeline dependencies and scheduling with Apache Airflow.
+- Implement data quality assertions, schema validation, and pipeline health monitoring.
+
+Requirements:
+- 2+ years of experience in data engineering or analytical platform design.
+- Advanced SQL proficiency (window functions, query plan optimization).
+- Hands-on experience with modern data stacks: Snowflake, dbt, Spark, and Airflow.
+"""
+    },
+    {
+        "id": "job-9",
+        "title": "QA Automation Lead & SDET",
+        "company": "QualiTech Global",
+        "department": "Engineering",
+        "experience_level": "Mid-Level",
+        "required_skills": ["Python", "JavaScript", "Test-Driven Development (TDD)", "CI/CD", "Git", "REST API"],
+        "preferred_skills": ["Docker", "Linux", "Agile / Scrum", "FastAPI"],
+        "description": """
+About the Role:
+We are looking for a Software Development Engineer in Test (SDET) to architect automated end-to-end testing frameworks and elevate product quality across our cloud apps.
+
+Responsibilities:
+- Design and execute scalable automated test suites (API, UI, integration, regression) in Python and TypeScript.
+- Embed automated tests into GitHub Actions CI pipelines with parallel test execution.
+- Collaborate with software engineers to enforce Test-Driven Development (TDD) practices.
+- Monitor test flakiness, latency, and report automated coverage metrics to leadership.
+
+Requirements:
+- 3+ years in software test automation or quality engineering.
+- Proficient in Python or JavaScript/TypeScript test frameworks (Pytest, Playwright, Cypress).
+- Experience testing RESTful microservices, asynchronous message queues, and databases.
+"""
+    },
+    {
+        "id": "job-10",
+        "title": "Technical Product Manager (Core Infrastructure)",
+        "company": "HyperGrid Cloud Systems",
+        "department": "Product",
+        "experience_level": "Senior",
+        "required_skills": ["Agile / Scrum", "System Design", "API Design", "Clean Code", "SQL"],
+        "preferred_skills": ["Microservices", "Cloud & DevOps", "AWS", "Python"],
+        "description": """
+About the Role:
+HyperGrid is seeking a Technical Product Manager to bridge developer experience, cloud infrastructure roadmaps, and business customer requirements.
+
+Responsibilities:
+- Define technical product requirements, API contracts, and architectural roadmaps for developer tools.
+- Lead sprint planning, grooming, and retrospectives in an agile engineering environment.
+- Analyze system metrics, API adoption trends, and error telemetry using SQL and dashboarding tools.
+- Engage directly with engineering leads and enterprise clients to resolve architectural trade-offs.
+
+Requirements:
+- 3+ years in Technical Product Management or combined software engineering + PM background.
+- Deep comfort discussing distributed systems, API design principles, and cloud infrastructure.
+- Exceptional cross-functional leadership, user story authoring, and analytical acumen.
+"""
+    },
+    {
+        "id": "job-11",
+        "title": "Embedded Systems & Firmware Engineer",
+        "company": "AeroMotion Robotics",
+        "department": "Engineering",
+        "experience_level": "Mid-Level",
+        "required_skills": ["C++", "Linux", "System Design", "Git", "Clean Code"],
+        "preferred_skills": ["Python", "Docker", "Test-Driven Development (TDD)", "Shell/Bash"],
+        "description": """
+About the Role:
+AeroMotion builds autonomous robotics and aerial telemetry units. We are looking for an Embedded C++ Engineer to write deterministic real-time firmware and sensor fusion drivers.
+
+Responsibilities:
+- Architect low-latency firmware in modern C++ on embedded Linux and RTOS architectures.
+- Implement communication protocols (CAN, SPI, I2C, UART) for sensor data ingestion.
+- Profile memory usage, thread safety, and deterministic execution cycles.
+- Integrate hardware-in-the-loop (HIL) automated test fixtures.
+
+Requirements:
+- 2+ years of embedded software or firmware engineering experience.
+- Strong proficiency in modern C++ and low-level Linux systems programming.
+- Familiarity with hardware interfaces, memory profiling, and real-time constraints.
+"""
+    },
+    {
+        "id": "job-12",
+        "title": "Enterprise Solutions Architect",
+        "company": "OmniCloud Enterprise Advisory",
+        "department": "Cloud & DevOps",
+        "experience_level": "Senior",
+        "required_skills": ["AWS", "Microservices", "System Design", "API Design", "PostgreSQL", "Docker", "Kubernetes"],
+        "preferred_skills": ["Azure", "Google Cloud", "Kafka", "Terraform", "Redis"],
+        "description": """
+About the Role:
+OmniCloud guides Fortune 500 enterprises through cloud transformations. We need an Enterprise Solutions Architect to design resilient cloud-native architectures.
+
+Responsibilities:
+- Author comprehensive High-Level and Low-Level architecture design documents for enterprise clients.
+- Modernize legacy monolithic systems into decoupled microservices and event-driven backbones.
+- Evaluate cloud cost optimization, disaster recovery, data sovereignty, and security posture.
+- Advise CTOs, VPs of Engineering, and lead development squads through technical execution.
+
+Requirements:
+- 6+ years of software architecture and cloud engineering experience.
+- Deep mastery of distributed systems design, microservices patterns, and multi-cloud architectures.
+- Proven track record communicating technical trade-offs to executive stakeholders.
 """
     }
 ]
@@ -154,18 +347,18 @@ Bachelor of Science in Computer Science | University of California, Berkeley | 2
     {
         "id": "cand-2",
         "name": "Sarah Jenkins",
-        "title": "Junior Software Engineer / CS Graduate",
+        "title": "Software Engineer (Full Stack & Systems)",
         "email": "sarah.jenkins.cs@outlook.com",
         "phone": "(512) 402-9811",
         "linkedin": "linkedin.com/in/sarahjenkins-cs",
         "github": "github.com/sjenkins-code",
-        "years_experience": 1.0,
+        "years_experience": 1.5,
         "raw_text": """
 SARAH JENKINS
 Austin, TX | sarah.jenkins.cs@outlook.com | (512) 402-9811 | linkedin.com/in/sarahjenkins-cs | github.com/sjenkins-code
 
 PROFESSIONAL SUMMARY
-Enthusiastic Computer Science graduate with strong foundations in object-oriented programming, modern web frameworks, and algorithmic problem solving. Experienced in building full-stack applications with React, TypeScript, and Python.
+Dynamic Software Engineer with strong foundations in full-stack web applications, REST APIs, relational databases, and algorithmic problem solving. Experienced in React, TypeScript, Python, and automated CI/CD deployments.
 
 TECHNICAL SKILLS
 - Languages: Python, JavaScript, TypeScript, Java, SQL, HTML/CSS
@@ -184,10 +377,10 @@ Algorithm Visualizer Platform
 - Reached 1,200 unique monthly visitors on GitHub Pages with 150+ GitHub stars.
 
 WORK EXPERIENCE
-Software Engineering Intern | Austin Tech Innovations | 2023 - 2023
-- Built responsive UI components in React and TypeScript for customer billing portal.
-- Wrote unit tests and assisted in debugging REST API endpoints in Python.
-- Collaborated in daily agile standups and bi-weekly sprint planning meetings.
+Software Engineer | Austin Tech Innovations | 2023 - 2024
+- Built responsive UI components in React and TypeScript for customer billing portal, improving load speed by 25%.
+- Wrote automated unit tests in Python, raising test coverage to 85% and reducing regression defects by 30%.
+- Collaborated in daily agile standups, sprint planning, and code reviews across 2 engineering pods.
 
 EDUCATION
 Bachelor of Science in Computer Science | University of Texas at Austin | 2020 - 2024

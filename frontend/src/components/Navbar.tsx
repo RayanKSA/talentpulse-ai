@@ -19,10 +19,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             <div className="flex items-center space-x-2">
               <span className="font-bold text-lg tracking-tight text-white">TalentPulse</span>
               <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">
-                AI ATS Engine
+                Enterprise ATS Platform
               </span>
             </div>
-            <p className="text-xs text-slate-400">Intelligent Resume Screening & Candidate Match</p>
+            <p className="text-xs text-slate-400">Intelligent Resume Screening & Career Match Intelligence</p>
           </div>
         </div>
 
@@ -55,8 +55,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         {/* Meta links */}
         <div className="hidden md:flex items-center space-x-3 text-xs text-slate-400">
           <div className="flex items-center space-x-1 px-2.5 py-1 rounded-md bg-slate-800/80 border border-slate-700">
-            <Briefcase className="w-3.5 h-3.5 text-brand-400" />
-            <span>FastAPI + React</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-slate-300">Live AI Matcher</span>
           </div>
           <a
             href="https://github.com"

@@ -88,6 +88,66 @@ SKILL_QUESTION_BANK = {
             "Result: Deployment frequency increased from weeks to multiple times a day."
         ],
         "rationale": "Crucial for assessing software delivery cadence and automated QA maturity."
+    },
+    "Terraform": {
+        "question": "How do you structure Terraform modules for multi-environment cloud infrastructure, and how do you manage remote state locking and avoid drift?",
+        "points": [
+            "Situation: Managing cloud resources across dev, staging, and prod environments.",
+            "Task: Ensuring modular, DRY, and secure Infrastructure as Code.",
+            "Action: Using S3/DynamoDB backends for state locking, workspace isolation, and automated plan PR checks.",
+            "Result: Zero configuration drift and fast reproducible infrastructure."
+        ],
+        "rationale": "Evaluates Infrastructure as Code maturity and enterprise state management."
+    },
+    "React Native": {
+        "question": "How do you diagnose frame drops, JS thread bottlenecks, and bridge communication latency in complex React Native applications?",
+        "points": [
+            "Situation: Sluggish gestures or slow list rendering on low-end mobile devices.",
+            "Task: Profiling mobile performance across both iOS and Android.",
+            "Action: Enabling the New Architecture (TurboModules & Fabric), optimizing FlatList windowSize, and minimizing serializations.",
+            "Result: Steady 60 FPS animations and smooth user experience."
+        ],
+        "rationale": "Validates deep mobile performance tuning and native runtime understanding."
+    },
+    "Snowflake": {
+        "question": "How do you optimize compute warehouse sizing, clustering keys, and caching layers (Metadata, Result, Warehouse) in Snowflake to balance query latency with cloud expenditure?",
+        "points": [
+            "Situation: Rapidly scaling analytical queries driving up cloud compute credits.",
+            "Task: Optimizing query performance while controlling budget.",
+            "Action: Setting auto-suspend timeouts, analyzing query profile DAGs, using search optimization service, and clustering on high-cardinality filters.",
+            "Result: 50% warehouse credit savings with sub-second query response."
+        ],
+        "rationale": "Assesses modern cloud data warehouse optimization and FinOps awareness."
+    },
+    "Apache Spark": {
+        "question": "When an Apache Spark distributed job suffers from data skew and out-of-memory (OOM) executor errors during a shuffle join, how do you diagnose and resolve it?",
+        "points": [
+            "Situation: A large multi-terabyte join failing on skewed partition keys.",
+            "Task: Diagnosing bottleneck stages using Spark Web UI.",
+            "Action: Salting skewed keys, tuning spark.sql.shuffle.partitions, enabling Adaptive Query Execution (AQE), and broadcast joins.",
+            "Result: Job runtime dropped from 3 hours to 22 minutes with zero failures."
+        ],
+        "rationale": "Tests real-world big data distributed computing and memory management depth."
+    },
+    "Application Security": {
+        "question": "How do you integrate automated security checks (SAST, DAST, dependency vulnerability scanning) into the developer workflow without generating excessive false positives?",
+        "points": [
+            "Situation: Development velocity slowed down by noisy security gate alerts.",
+            "Task: Establishing actionable, developer-friendly security guardrails.",
+            "Action: Triaging high-severity CVEs, pre-commit secret detection, and automated dependency remediation (Dependabot/Snyk).",
+            "Result: Reduced mean-time-to-remediate (MTTR) critical flaws from 45 days to 3 days."
+        ],
+        "rationale": "Gauges DevSecOps culture and automated vulnerability management."
+    },
+    "System Design": {
+        "question": "Walk me through how you would architect a globally distributed URL shortener or rate limiter handling 100,000 requests per second with 99.99% availability.",
+        "points": [
+            "Situation: High-throughput, low-latency globally distributed requirements.",
+            "Task: Formulating functional and non-functional requirements with capacity estimations.",
+            "Action: Designing CDN caching, Redis sliding window rate limiting, consistent hashing, and database sharding.",
+            "Result: Resilient sub-10ms P99 latency with graceful degradation under DDoS."
+        ],
+        "rationale": "Validates high-level architectural reasoning, trade-off evaluation, and scaling fundamentals."
     }
 }
 

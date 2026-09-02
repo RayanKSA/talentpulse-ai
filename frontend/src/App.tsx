@@ -10,7 +10,7 @@ import { InterviewSection } from "./components/InterviewSection";
 import { RecruiterDashboard } from "./components/RecruiterDashboard";
 import { JobPosting, SampleResume, MatchAnalysisResult } from "./types";
 import { fetchJobs, fetchSampleResumes, parseResumeUpload, matchResume } from "./api";
-import { Sparkles, CheckCircle, AlertCircle, Award, ShieldCheck, HelpCircle, FileCheck2 } from "lucide-react";
+import { AlertCircle, Award, ShieldCheck, HelpCircle, Download } from "lucide-react";
 
 export function App() {
   const [activeTab, setActiveTab] = useState<"candidate" | "recruiter">("candidate");
@@ -126,6 +126,64 @@ export function App() {
     }
   };
 
+  // Export structured candidate match dossier
+  const handleExportReport = () => {
+    if (!analysisResult) return;
+    const report = `=====================================================
+TALENTPULSE AI - CANDIDATE MATCH & ATS DOSSIER
+=====================================================
+
+CANDIDATE: ${analysisResult.candidate_name}
+TARGET ROLE: ${analysisResult.job_title}
+DATE GENERATED: ${new Date().toLocaleDateString()}
+
+EXECUTIVE SUMMARY:
+${analysisResult.summary_for_recruiter}
+
+-----------------------------------------------------
+EVALUATION METRICS
+-----------------------------------------------------
+Composite Fit Score:      ${analysisResult.overall_score}/100 (${analysisResult.fit_verdict})
+Skill Taxonomy Match:     ${analysisResult.skills_score}%
+Semantic Relevance:       ${Math.round(analysisResult.semantic_similarity * 100)}%
+ATS Compliance Grade:     Grade ${analysisResult.ats_audit.grade} (${analysisResult.ats_audit.overall_score}/100)
+Experience Level Fit:     ${analysisResult.experience_score}%
+
+-----------------------------------------------------
+COMPETENCY BREAKDOWN
+-----------------------------------------------------
+Matched Skills (${analysisResult.skill_breakdown.matched_skills.length}):
+${analysisResult.skill_breakdown.matched_skills.map((s) => `  [+] ${s}`).join("\n")}
+
+Missing Core Skills (${analysisResult.skill_breakdown.missing_required_skills.length}):
+${analysisResult.skill_breakdown.missing_required_skills.map((s) => `  [-] ${s}`).join("\n")}
+
+Bonus Candidate Skills (${analysisResult.skill_breakdown.bonus_skills.length}):
+${analysisResult.skill_breakdown.bonus_skills.map((s) => `  [*] ${s}`).join("\n")}
+
+-----------------------------------------------------
+ATS COMPLIANCE AUDIT
+-----------------------------------------------------
+${analysisResult.ats_audit.checks.map((c) => `[${c.passed ? "PASS" : "FAIL"}] ${c.rule} (${c.score}/${c.max_score} pts)\n  Feedback: ${c.feedback}`).join("\n\n")}
+
+-----------------------------------------------------
+TAILORED INTERVIEW PROBES & STAR RUBRICS
+-----------------------------------------------------
+${analysisResult.interview_questions.map((q, i) => `Question ${i + 1} (${q.category}${q.skill_targeted ? ` - ${q.skill_targeted}` : ""}):
+${q.question}
+Interviewer Rationale: ${q.rationale}
+STAR Framework Rubric:
+${q.suggested_star_points.map((p) => `  * ${p}`).join("\n")}`).join("\n\n")}
+`;
+
+    const blob = new Blob([report], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Candidate_Dossier_${analysisResult.candidate_name.replace(/\s+/g, "_")}.txt`;
+    a.click();
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -195,9 +253,19 @@ export function App() {
                       </h2>
                     </div>
 
-                    <div className="bg-slate-950/80 px-4 py-2.5 rounded-xl border border-slate-800 text-xs text-slate-300 max-w-lg leading-relaxed">
-                      <strong className="text-brand-400 font-semibold block mb-0.5">Recruiter Executive Brief:</strong>
-                      {analysisResult.summary_for_recruiter}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                      <div className="bg-slate-950/80 px-4 py-2.5 rounded-xl border border-slate-800 text-xs text-slate-300 max-w-lg leading-relaxed">
+                        <strong className="text-brand-400 font-semibold block mb-0.5">Recruiter Executive Brief:</strong>
+                        {analysisResult.summary_for_recruiter}
+                      </div>
+
+                      <button
+                        onClick={handleExportReport}
+                        className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center space-x-1.5 transition shadow-sm self-stretch sm:self-auto justify-center"
+                      >
+                        <Download className="w-4 h-4 text-brand-400" />
+                        <span>Export Dossier</span>
+                      </button>
                     </div>
                   </div>
 
@@ -300,14 +368,14 @@ export function App() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
             <span className="font-semibold text-slate-300">TalentPulse AI</span>
-            <span>&bull; Full-Stack Computer Science Portfolio Project</span>
+            <span>&bull; Enterprise ATS &amp; Candidate Match Intelligence Platform</span>
           </div>
           <div className="flex items-center space-x-4 text-[11px] text-slate-400">
-            <span>FastAPI Backend</span>
+            <span>FastAPI Engine</span>
             <span>&bull;</span>
             <span>React &amp; TypeScript</span>
             <span>&bull;</span>
-            <span>Scikit-Learn TF-IDF NLP</span>
+            <span>TF-IDF Vector NLP</span>
             <span>&bull;</span>
             <span>Docker Ready</span>
           </div>
